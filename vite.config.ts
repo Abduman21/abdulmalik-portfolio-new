@@ -1,10 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { sites } from "@openai/sites-vite-plugin";
+import { existsSync } from "node:fs";
 import path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+const sitesConfigPath = path.resolve(__dirname, ".openai/hosting.json");
+
+export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
@@ -12,7 +15,7 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  plugins: [react(), sites()],
+  plugins: [react(), ...(existsSync(sitesConfigPath) ? [sites()] : [])],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
