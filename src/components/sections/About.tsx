@@ -12,7 +12,7 @@ const fadeUp = {
 export default function About() {
   return (
     <section id="about" className="section-padding relative border-t border-white/[0.05]">
-      <div className="container-custom">
+      <div className="container-custom max-w-4xl">
         <motion.div
           initial="hidden"
           whileInView="visible"

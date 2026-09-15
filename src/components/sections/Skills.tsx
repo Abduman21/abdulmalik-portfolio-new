@@ -68,7 +68,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-padding relative border-t border-white/[0.05]">
-      <div className="container-custom">
+      <div className="container-custom max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,29 +96,16 @@ export default function Skills() {
               transition={{ duration: 0.5, delay: catIndex * 0.1 }}
               className="glass-card-hover p-5"
             >
-              <h3 className="mb-5 font-heading text-lg font-semibold text-foreground">{cat.title}</h3>
-              <div className="space-y-4">
+              <h3 className="mb-4 font-heading text-lg font-semibold text-foreground">{cat.title}</h3>
+              <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-1.5">
-                      <span className="text-sm flex items-center gap-2">
-                        <span className="inline-flex min-w-9 items-center justify-center rounded border border-primary/15 bg-primary/5 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-primary">
-                          {getSkillIcon(skill.name)}
-                        </span>
-                        {skill.name}
-                      </span>
-                      <span className="text-xs text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <div className="h-1.5 rounded-full bg-secondary overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, delay: 0.3 }}
-                      />
-                    </div>
-                  </div>
+                  <span
+                    key={skill.name}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-foreground"
+                  >
+                    <span className="text-primary">{getSkillIcon(skill.name)}</span>
+                    {skill.name}
+                  </span>
                 ))}
               </div>
             </motion.div>

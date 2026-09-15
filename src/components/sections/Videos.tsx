@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, MonitorPlay, Play, Video, Youtube } from "lucide-react";
+import { ArrowUpRight, Play, Video, Youtube } from "lucide-react";
 import { usePortfolioContent } from "@/hooks/use-portfolio-content";
 
 const videoIcons = [<Play size={22} />, <Youtube size={22} />, <Video size={22} />];
@@ -14,7 +14,7 @@ export default function Videos() {
 
   return (
     <section id="videos" className="section-padding relative border-t border-white/[0.06]">
-      <div className="container-custom">
+      <div className="container-custom max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,44 +30,48 @@ export default function Videos() {
           </p>
         </motion.div>
 
-        <div className="grid gap-6 lg:grid-cols-[1.18fr_0.82fr]">
-          <motion.a
-            href={introVideo.url}
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
+          {/* ── Featured Intro: actual embedded player ── */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card-hover group block overflow-hidden"
+            className="rounded-xl border border-white/[0.07] bg-card"
           >
-            <div className="relative aspect-video overflow-hidden bg-background">
-              <div className="absolute inset-0 grid-bg opacity-35" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.18),transparent_28rem),linear-gradient(135deg,hsl(var(--card)),hsl(var(--background)))]" />
-              <div className="relative flex h-full flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="inline-flex items-center gap-2 rounded-md border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm font-semibold text-primary">
-                    <Youtube size={18} />
-                    Featured Intro
-                  </span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_18px_45px_hsl(var(--primary)/0.22)] transition-transform duration-300 group-hover:scale-105">
-                    <Play size={20} fill="currentColor" />
-                  </span>
-                </div>
-
-                <div className="max-w-xl">
-                  <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-primary">
-                    <MonitorPlay size={28} />
-                  </div>
-                  <h3 className="font-heading text-2xl font-bold sm:text-3xl">{introVideo.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
-                    {introVideo.description}
-                  </p>
-                </div>
-              </div>
+            {/* Header label */}
+            <div className="flex items-center px-5 py-3 border-b border-white/[0.06]">
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                <Youtube size={16} />
+                Featured Intro
+              </span>
             </div>
-          </motion.a>
 
-          <div className="grid gap-6">
+            {/* Embedded player — aspect-video = 16:9 on all screens */}
+            <div className="relative w-full" style={{ paddingBottom: "56.25%", height: 0 }}>
+              <iframe
+                src={`https://www.youtube.com/embed/${
+                  introVideo.url.includes("watch?v=")
+                    ? introVideo.url.split("watch?v=")[1]?.split("&")[0]
+                    : introVideo.url.includes("youtu.be/")
+                    ? introVideo.url.split("youtu.be/")[1]?.split("?")[0]
+                    : ""
+                }?rel=0&modestbranding=1&playsinline=1`}
+                title={introVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
+              />
+            </div>
+
+            {/* Caption */}
+            <div className="px-5 py-4">
+              <h3 className="font-heading text-base font-semibold text-foreground">{introVideo.title}</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{introVideo.description}</p>
+            </div>
+          </motion.div>
+
+          {/* ── Supporting video cards ── */}
+          <div className="flex flex-col gap-5">
             {supportingVideos.map((item, index) => (
               <motion.a
                 key={item.id}
@@ -78,24 +82,24 @@ export default function Videos() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.12 }}
-                className="glass-card-hover group flex min-h-44 flex-col p-6"
+                className="glass-card-hover group flex flex-1 flex-col p-5"
               >
-                <div className="mb-5 flex items-center justify-between gap-4">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-primary/15 bg-primary/5 text-primary">
-                    {videoIcons[index + 1] ?? <Video size={22} />}
+                <div className="mb-4 flex items-center justify-between gap-4">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/15 bg-primary/5 text-primary">
+                    {videoIcons[index + 1] ?? <Video size={20} />}
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-xs font-medium text-muted-foreground">
                     {item.source}
                   </span>
                 </div>
 
-                <h3 className="font-heading text-lg font-semibold transition-colors group-hover:text-primary">
+                <h3 className="font-heading text-base font-semibold transition-colors group-hover:text-primary">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.description}</p>
-                <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-primary">
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.description}</p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-primary">
                   Watch on YouTube
-                  <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </motion.a>
             ))}

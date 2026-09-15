@@ -8,7 +8,7 @@ export default function Blog() {
 
   return (
     <section id="blog" className="section-padding relative border-t border-white/[0.06] bg-card/45">
-      <div className="container-custom">
+      <div className="container-custom max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

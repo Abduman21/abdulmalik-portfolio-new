@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { navLinks } from "@/data/portfolio-data";
 import { usePortfolioContent } from "@/hooks/use-portfolio-content";
-import { Menu, X, Download, Code2 } from "lucide-react";
-import logo from "@/assets/abdulogo2.png";
+import { Menu, X, Download } from "lucide-react";
+import logo from "@/assets/abdu-logo.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,12 +27,13 @@ export default function Navbar() {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3" aria-label="Abdulmalik Muze home">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary">
-            <Code2 size={18} />
-          </span>
-          <img src={logo} alt="Abdu Tech" className="hidden h-8 w-auto opacity-80" />
-          <span className="font-heading text-sm font-semibold tracking-wide text-foreground">
+        <a href="#" className="group flex items-center gap-3" aria-label="Abdulmalik Muze home">
+          <img
+            src={logo}
+            alt="Abdu Tech Logo"
+            className="h-9 w-9 rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="font-heading text-sm font-semibold tracking-wide text-foreground transition-colors duration-300 group-hover:text-primary">
             {profile.name}
           </span>
         </a>

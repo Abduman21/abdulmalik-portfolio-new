@@ -285,17 +285,10 @@ export const mediaResources = [
     title: "Introduction Video",
     source: "YouTube",
     description: "A short personal intro covering who I am, what I build, and how I approach software projects.",
-    url: "https://youtube.com/@abdulmalik_muze?si=l_U71erh0HdBuch-",
+    url: "https://youtu.be/h9UnTWtTZlk",
   },
   {
     id: 2,
-    title: "YouTube Channel",
-    source: "YouTube",
-    description: "My home for development videos, project walkthroughs, and practical notes from the work.",
-    url: "https://youtube.com/@abdulmalik_muze?si=l_U71erh0HdBuch-",
-  },
-  {
-    id: 3,
     title: "Experience Videos",
     source: "YouTube",
     description: "Walkthroughs and stories from dashboards, portfolio builds, UI work, and full-stack learning.",

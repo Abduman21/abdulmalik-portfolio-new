@@ -95,7 +95,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-padding relative border-t border-white/[0.06] bg-card/45">
-      <div className="container-custom max-w-5xl">
+      <div className="container-custom max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -124,14 +124,36 @@ export default function Contact() {
               Best fit: portfolio sites, dashboards, API-backed products, AI integrations,
               automation scripts, and MVPs that need a careful developer.
             </p>
-            <div className="mt-6 space-y-3 text-sm text-muted-foreground">
-              <a className="block transition-colors hover:text-primary" href="mailto:abdulmalikmuze@gmail.com">
+            <div className="mt-6 flex flex-col gap-2.5">
+              <a
+                href="mailto:abdulmalikmuze@gmail.com"
+                className="group inline-flex items-center gap-3 rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-muted-foreground transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+              >
+                <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-primary group-hover:border-primary/30">
+                  <Send size={13} />
+                </span>
                 abdulmalikmuze@gmail.com
               </a>
-              <a className="block transition-colors hover:text-primary" href="https://github.com/Abduman21" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/Abduman21"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-muted-foreground transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+              >
+                <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-primary group-hover:border-primary/30">
+                  <Github size={13} />
+                </span>
                 github.com/Abduman21
               </a>
-              <a className="block transition-colors hover:text-primary" href="https://www.linkedin.com/in/abdulmalik-muze-819951319" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.linkedin.com/in/abdulmalik-muze-819951319"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-muted-foreground transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+              >
+                <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-primary group-hover:border-primary/30">
+                  <Linkedin size={13} />
+                </span>
                 LinkedIn profile
               </a>
             </div>
