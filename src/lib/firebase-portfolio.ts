@@ -28,6 +28,17 @@ export const loadPortfolioContent = async (): Promise<PortfolioContent> => {
       return loadLocalPortfolioContent();
     }
 
+    if (data.mediaResources) {
+      data.mediaResources = data.mediaResources
+        .filter((m) => !m.title.toLowerCase().includes("channel") && !m.url.includes("/@"))
+        .map((m, idx) => {
+          if (idx === 0 && (m.url.includes("/@") || !m.url.includes("h9UnTWtTZlk"))) {
+            return { ...m, url: defaults.mediaResources[0]?.url || "https://youtu.be/h9UnTWtTZlk" };
+          }
+          return m;
+        });
+    }
+
     const content = limitBlogPosts({
       ...defaults,
       ...data,

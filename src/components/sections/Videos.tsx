@@ -4,6 +4,12 @@ import { usePortfolioContent } from "@/hooks/use-portfolio-content";
 
 const videoIcons = [<Play size={22} />, <Youtube size={22} />, <Video size={22} />];
 
+const extractYouTubeId = (url?: string): string => {
+  if (!url) return "h9UnTWtTZlk";
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+  return match && match[1] ? match[1] : "h9UnTWtTZlk";
+};
+
 export default function Videos() {
   const { mediaResources } = usePortfolioContent();
   const [introVideo, ...supportingVideos] = mediaResources;
@@ -11,6 +17,11 @@ export default function Videos() {
   if (!introVideo) {
     return null;
   }
+
+  const videoId = extractYouTubeId(introVideo.url);
+  const validSupporting = supportingVideos.filter(
+    (item) => !item.title.toLowerCase().includes("channel") && !item.url.includes("/@")
+  );
 
   return (
     <section id="videos" className="section-padding relative border-t border-white/[0.06]">
@@ -49,14 +60,9 @@ export default function Videos() {
             {/* Embedded player — aspect-video = 16:9 on all screens */}
             <div className="relative w-full" style={{ paddingBottom: "56.25%", height: 0 }}>
               <iframe
-                src={`https://www.youtube.com/embed/${
-                  introVideo.url.includes("watch?v=")
-                    ? introVideo.url.split("watch?v=")[1]?.split("&")[0]
-                    : introVideo.url.includes("youtu.be/")
-                    ? introVideo.url.split("youtu.be/")[1]?.split("?")[0]
-                    : ""
-                }?rel=0&modestbranding=1&playsinline=1`}
-                title={introVideo.title}
+                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1`}
+                title={introVideo.title || "Introduction Video"}
+                referrerPolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                 allowFullScreen
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
@@ -72,7 +78,7 @@ export default function Videos() {
 
           {/* ── Supporting video cards ── */}
           <div className="flex flex-col gap-5">
-            {supportingVideos.map((item, index) => (
+            {validSupporting.map((item, index) => (
               <motion.a
                 key={item.id}
                 href={item.url}
