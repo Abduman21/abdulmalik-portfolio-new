@@ -6,7 +6,7 @@ const videoIcons = [<Play size={22} />, <Youtube size={22} />, <Video size={22} 
 
 const extractYouTubeId = (url?: string): string => {
   if (!url) return "h9UnTWtTZlk";
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
   return match && match[1] ? match[1] : "h9UnTWtTZlk";
 };
 

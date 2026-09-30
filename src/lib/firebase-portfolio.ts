@@ -28,6 +28,15 @@ export const loadPortfolioContent = async (): Promise<PortfolioContent> => {
       return loadLocalPortfolioContent();
     }
 
+    if (data.socialLinks) {
+      data.socialLinks = data.socialLinks.map((link) => {
+        if (link.platform === "youtube" || link.label.toLowerCase() === "youtube") {
+          return { ...link, url: "https://www.youtube.com/@abdu_tech2" };
+        }
+        return link;
+      });
+    }
+
     if (data.mediaResources) {
       data.mediaResources = data.mediaResources
         .filter((m) => !m.title.toLowerCase().includes("channel") && !m.url.includes("/@"))
@@ -35,8 +44,15 @@ export const loadPortfolioContent = async (): Promise<PortfolioContent> => {
           if (idx === 0 && (m.url.includes("/@") || !m.url.includes("h9UnTWtTZlk"))) {
             return { ...m, url: defaults.mediaResources[0]?.url || "https://youtu.be/h9UnTWtTZlk" };
           }
+          if (idx === 1 && (m.url.includes("/@") || !m.url.includes("xdWjnSRGYcc"))) {
+            return { ...m, url: defaults.mediaResources[1]?.url || "https://youtube.com/shorts/xdWjnSRGYcc" };
+          }
           return m;
         });
+
+      if (data.mediaResources.length < 2 && defaults.mediaResources.length >= 2) {
+        data.mediaResources = defaults.mediaResources;
+      }
     }
 
     const content = limitBlogPosts({

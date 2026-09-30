@@ -30,7 +30,7 @@ export const socialLinks = [
   { id: 7, label: "X", platform: "x", url: "https://x.com/abduTech21" },
   { id: 8, label: "Substack", platform: "substack", url: "https://substack.com/@abdulmalikmuze?utm_source=share&utm_medium=android&r=7pkruy" },
   { id: 9, label: "TikTok", platform: "tiktok", url: "https://www.tiktok.com/@abdu_tech21?_r=1&_t=ZS-990onYRfnFv" },
-  { id: 10, label: "YouTube", platform: "youtube", url: "https://youtube.com/@abdulmalik_muze?si=l_U71erh0HdBuch-" },
+  { id: 10, label: "YouTube", platform: "youtube", url: "https://www.youtube.com/@abdu_tech2" },
 ];
 
 export const projects: Project[] = [
@@ -292,7 +292,7 @@ export const mediaResources = [
     title: "Experience Videos",
     source: "YouTube",
     description: "Walkthroughs and stories from dashboards, portfolio builds, UI work, and full-stack learning.",
-    url: "https://youtube.com/@abdulmalik_muze?si=l_U71erh0HdBuch-",
+    url: "https://youtube.com/shorts/xdWjnSRGYcc",
   },
 ];
 
