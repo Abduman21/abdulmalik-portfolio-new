@@ -37,11 +37,11 @@ export const loadLocalPortfolioContent = (): PortfolioContent => {
       parsed.mediaResources = parsed.mediaResources
         .filter((m) => !m.title.toLowerCase().includes("channel") && !m.url.includes("/@"))
         .map((m, idx) => {
-          if (idx === 0 && (m.url.includes("/@") || !m.url.includes("h9UnTWtTZlk"))) {
-            return { ...m, url: defaults.mediaResources[0]?.url || "https://youtu.be/h9UnTWtTZlk" };
+          if (idx === 0 && (m.url.includes("/@") || !m.url.includes("mcZ3ef1rOHk"))) {
+            return { ...m, url: defaults.mediaResources[0]?.url || "https://youtu.be/mcZ3ef1rOHk" };
           }
-          if (idx === 1 && (m.url.includes("/@") || !m.url.includes("xdWjnSRGYcc"))) {
-            return { ...m, url: defaults.mediaResources[1]?.url || "https://youtube.com/shorts/xdWjnSRGYcc" };
+          if (idx === 1 && (m.url.includes("/@") || !m.url.includes("pUAkQTl7Paw"))) {
+            return { ...m, url: defaults.mediaResources[1]?.url || "https://youtu.be/pUAkQTl7Paw" };
           }
           return m;
         });

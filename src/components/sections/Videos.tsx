@@ -5,9 +5,9 @@ import { usePortfolioContent } from "@/hooks/use-portfolio-content";
 const videoIcons = [<Play size={22} />, <Youtube size={22} />, <Video size={22} />];
 
 const extractYouTubeId = (url?: string): string => {
-  if (!url) return "h9UnTWtTZlk";
+  if (!url) return "mcZ3ef1rOHk";
   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
-  return match && match[1] ? match[1] : "h9UnTWtTZlk";
+  return match && match[1] ? match[1] : "mcZ3ef1rOHk";
 };
 
 export default function Videos() {
