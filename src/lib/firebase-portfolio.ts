@@ -55,6 +55,10 @@ export const loadPortfolioContent = async (): Promise<PortfolioContent> => {
       }
     }
 
+    if (data.profile?.resumeUrl && data.profile.resumeUrl.includes("1OIGsfbxcg6wtFYJaJajP19ll6MEZ0ffj")) {
+      data.profile.resumeUrl = defaults.profile.resumeUrl;
+    }
+
     const content = limitBlogPosts({
       ...defaults,
       ...data,

@@ -17,7 +17,7 @@ export const profile = {
     "I design and ship practical software: responsive websites, full-stack systems, AI-assisted workflows, and automation tools that help teams move faster.",
   primaryCta: "Hire Me",
   secondaryCta: "View Projects",
-  resumeUrl: "https://drive.google.com/file/d/1OIGsfbxcg6wtFYJaJajP19ll6MEZ0ffj/view?usp=drivesdk",
+  resumeUrl: "https://drive.google.com/file/d/16L212ZIlxcYEx02TVYzMVkwA6gVPr6Tj/view?usp=drivesdk",
 };
 
 export const socialLinks = [

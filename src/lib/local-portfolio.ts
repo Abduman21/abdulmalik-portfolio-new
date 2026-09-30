@@ -50,6 +50,9 @@ export const loadLocalPortfolioContent = (): PortfolioContent => {
         parsed.mediaResources = defaults.mediaResources;
       }
     }
+    if (parsed.profile?.resumeUrl && parsed.profile.resumeUrl.includes("1OIGsfbxcg6wtFYJaJajP19ll6MEZ0ffj")) {
+      parsed.profile.resumeUrl = defaults.profile.resumeUrl;
+    }
     return limitBlogPosts({
       ...defaults,
       ...parsed,
